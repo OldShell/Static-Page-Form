@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<case>
+  <referral>
+    <date>
+      <YYYY></YYYY>
+      <MM></MM>
+      <DD></DD>
+    </date>
+    <name>
+      <first>p</first>
+      <last>k</last>
+    </name>
+    <phone>555</phone>
+    <email>pk@hotmail.com</email>
+    <role>Other</role>
+  </referral>
+  <client>
+    <name>
+      <first>d</first>
+      <last>k</last>
+    </name>
+    <problem>wet feet</problem>
+    <suggestion>shoes</suggestion>
+  </client>
+  <engineer>
+    <name>
+      <first>j</first>
+      <last>k</last>
+    </name>
+    <solution>go to shop</solution>
+    <cost>
+      <pounds>30</pounds>
+      <pence>00</pence>
+    </cost>
+    <endDate>
+      <YYYY></YYYY>
+      <MM></MM>
+      <DD></DD>
+    </endDate>
+  </engineer>
+</case>

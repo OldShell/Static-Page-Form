@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<case>
+  <referral>
+    <date>
+      <YYYY></YYYY>
+      <MM></MM>
+      <DD></DD>
+    </date>
+    <name>
+      <first>q</first>
+      <last>w</last>
+    </name>
+    <phone>e</phone>
+    <email>r</email>
+    <role></role>
+  </referral>
+  <client>
+    <name>
+      <first>t</first>
+      <last>y</last>
+    </name>
+    <problem></problem>
+    <suggestion></suggestion>
+  </client>
+  <engineer>
+    <name>
+      <first></first>
+      <last></last>
+    </name>
+    <solution></solution>
+    <cost>
+      <pounds></pounds>
+      <pence></pence>
+    </cost>
+    <endDate>
+      <YYYY></YYYY>
+      <MM></MM>
+      <DD></DD>
+    </endDate>
+  </engineer>
+</case>

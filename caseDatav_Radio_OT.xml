@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<case>
+  <referral>
+    <date>
+      <YYYY></YYYY>
+      <MM></MM>
+      <DD></DD>
+    </date>
+    <name>
+      <first>Bill</first>
+      <last>Gates</last>
+    </name>
+    <phone>02392 342236</phone>
+    <email>bill.gates@hotmail.com</email>
+    <role>Occupational Therapist</role>
+  </referral>
+  <client>
+    <name>
+      <first>D</first>
+      <last>Trump</last>
+    </name>
+    <problem>various</problem>
+    <suggestion>Bleach, Our aim is to teach people how to use the principles of targeted hygiene to help protect themselves from coronavirus and break the chain of infection. As a chartered environmental health practitioner</suggestion>
+  </client>
+  <engineer>
+    <name>
+      <first>John</first>
+      <last>knight</last>
+    </name>
+    <solution>Domestos is a British brand of household cleaning range which contains bleach (primarily sodium hypochlorite NaOCl). It is manufactured by Unilever. Domestos (and Chlorox, essentially a 10–25% solution of sodium hypochlorite[1])</solution>
+    <cost>
+      <pounds>1</pounds>
+      <pence>00</pence>
+    </cost>
+    <endDate>
+      <YYYY></YYYY>
+      <MM></MM>
+      <DD></DD>
+    </endDate>
+  </engineer>
+</case>
