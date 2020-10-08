@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<case>
+  <referral>
+    <date>
+      <YYYY></YYYY>
+      <MM></MM>
+      <DD></DD>
+    </date>
+    <name>
+      <first>Peppa</first>
+      <last>Pig</last>
+    </name>
+    <phone>1234 098765</phone>
+    <email>pig@house.hill.co.uk</email>
+    <role>Other</role>
+  </referral>
+  <client>
+    <name>
+      <first>Grandpa</first>
+      <last>Pig</last>
+    </name>
+    <problem>Eyes on same side of head</problem>
+    <suggestion>Glasses adaptation</suggestion>
+  </client>
+  <engineer>
+    <name>
+      <first></first>
+      <last></last>
+    </name>
+    <solution></solution>
+    <cost>
+      <pounds></pounds>
+      <pence></pence>
+    </cost>
+    <endDate>
+      <YYYY></YYYY>
+      <MM></MM>
+      <DD></DD>
+    </endDate>
+  </engineer>
+</case>
