@@ -124,7 +124,7 @@ function xmlToForm(ourFormObject,xmlString){
 		textNode = getTextNode(xmap[i].xpath,xmlDoc);
 		elementName = xmap[i].eName;
 		if(!textNode){continue;}
-		if(document.getElementById(elementName)){ // some forms do not have a field for every node in the XML
+		if(document.getElementsByName(elementName)){ // some forms do not have a field for every node in the XML
 			ourFormObject.elements[elementName].value = textNode;
 		}
 	}
