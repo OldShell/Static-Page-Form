@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Engineer's Form</title>
+<link rel="stylesheet" type="text/css" href="view.css" media="all">
+<script type="text/javascript" src="view.js"></script>
+<script type="text/javascript" src = "case.js"></script>
+
+</head>
+<body id="main_body" >
+	
+	<img id="top" src="top.png" alt="">
+	<div id="form_container">
+	
+		<h1><a>Engineer's Form An Example Snippet</a></h1>
+		<form id="form_2136" class="appnitro" enctype="multipart/form-data" method="post" action="">
+					<div class="form_description">
+			<h2>Engineer's Form. An Example Snippet (Referral and Client info is READ ONLY)</h2>
+			<p>verion 3.0 (a partial Example for development)</p>
+		</div>						
+			<ul >
+			
+					<li id="li_14" >
+		<label class="description" for="element_14">Load Referral Information</label>
+		<div>
+			<input id="element_14" name="element_14" class="element file" type="file" onchange="fromLocalFile(&quot;element_14&quot , &quot;dataIn&quot;,this.form)"/>
+		</div> <p class="guidelines" id="guide_14"><small>You may like to part fill the form and save it as your template.</small></p>
+		</li>		<li class="section_break">
+			<h3>Referrer's Details</h3>
+			<p></p>
+		</li>		<li id="li_11" >
+		<label class="description" for="element_11">Referrer's Name </label>
+		<span>
+			<input id="referral_name_first" name= "referral_name_first" class="element text" maxlength="255" size="8" value="" disabled/>
+			<label>First</label>
+		</span>
+		<span>
+			<input id="referral_name_last" name= "referral_name_last" class="element text" maxlength="255" size="14" value="" disabled />
+			<label>Last</label>
+		</span> 
+		</li>		<li id="li_1" >
+		<label class="description" for="referral_phone">Referrer's Phone Number </label>
+		<div>
+			<input id="referral_phone" name="referral_phone" class="element text medium" type="text" maxlength="255" value="" disabled /> 
+		</div><p class="guidelines" id="guide_1"><small>Mobile or Land line</small></p> 
+		</li>		<li id="li_2" >
+		<label class="description" for="referral_email">Referrer's Email </label>
+		<div>
+			<input id="referral_email" name="referral_email" class="element text medium" type="text" maxlength="255" value="" disabled /> 
+		</div> 
+		</li>		<li id="li_15" >
+		<label class="description" for="referral_role">Are you a Medical professional? </label>
+		<span>
+			<input id="referral_role_1" name="referral_role" class="element radio" type="radio" value="Occupational Therapist" disabled  />
+<label class="choice" for="referral_role_1">Occupational Therapist</label>
+<input id="referral_role_2" name="referral_role" class="element radio" type="radio" value="Physical Therapist" disabled  />
+<label class="choice" for="referral_role_2">Physical Therapist</label>
+<input id="referral_role_3" name="referral_role" class="element radio" type="radio" value="Other" disabled  />
+<label class="choice" for="referral_role_3">Other</label>
+
+		</span> 
+		</li>		<li class="section_break">
+			<h3>Client's Details</h3>
+			<p></p>
+		</li>		<li id="li_10" >
+		<label class="description" for="element_10">Client's Name
+ </label>
+		<span>
+			<input id="client_name_first" name= "client_name_first" class="element text" maxlength="255" size="8" value="" disabled />
+			<label>First</label>
+		</span>
+		<span>
+			<input id="client_name_last" name= "client_name_last" class="element text" maxlength="255" size="14" value="" disabled />
+			<label>Last</label>
+		</span> 
+		</li>		<li id="li_5" >
+		<label class="description" for="client_problem">Client's Problem </label>
+		<div>
+			<textarea id="client_problem" name="client_problem" class="element textarea small"  disabled></textarea> 
+		</div> 
+		</li>		<li id="li_6" >
+		<label class="description" for="client_suggestion">What do you think we can do for the client. </label>
+		<div>
+			<textarea id="client_suggestion" name="client_suggestion" class="element textarea small"  disabled></textarea> 
+		</div> 
+		</li>		<li class="section_break">
+			<h3>Engineer's Details</h3>
+			<p></p>
+		</li>		<li id="li_9" >
+		<label class="description" for="element_9">Engineer's name </label>
+		<span>
+			<input id="engineer_name_first" name= "engineer_name_first" class="element text" maxlength="255" size="8" value=""/>
+			<label>First</label>
+		</span>
+		<span>
+			<input id="engineer_name_last" name= "engineer_name_last" class="element text" maxlength="255" size="14" value=""/>
+			<label>Last</label>
+		</span> 
+		</li>		<li id="li_8" >
+		<label class="description" for="engineer_solution">Project Details and Solution </label>
+		<div>
+			<textarea id="engineer_solution" name="engineer_solution" class="element textarea medium"></textarea> 
+		</div> 
+		</li>		<li id="li_12" >
+		<label class="description" for="element_12">Total Expenditure</label>
+		<span class="symbol">&#163;</span>
+		<span>
+			<input id="engineer_cost_pounds" name="engineer_cost_pounds" class="element text currency" size="10" value="" type="text" /> .		
+			<label for="engineer_cost_pounds">Pounds</label>
+		</span>
+		<span>
+			<input id="engineer_cost_pence" name="engineer_cost_pence" class="element text" size="2" maxlength="2" value="" type="text" />
+			<label for="engineer_cost_pence">Pence</label>
+		</span>
+<li>	
+		<h3>On Submit the form data will be send to your Download folder. Move it from there to your Dropbox folder</h3>
+			<p></p>
+</li>		
+<li>		 
+		<label class="description" for="CaseDataFileName">Download File Name</label>
+		<div>
+			<input id="CaseDataFileName" name="CaseDataFileName" class="element text medium" type="text" maxlength="255" value="Case_Data"/> 
+		</div>
+</li>	
+					<li class="buttons">
+			    <input type="hidden" name="form_id" value="2136" />
+			    
+				<input id="saveForm" class="button_text" type="button" name="submit" value="Submit" onClick= "formToXml(this.form)" />
+		</li>
+			</ul>
+		</form>	
+
+		<div id="footer">
+			Generated by <a href="http://www.phpform.org">pForm</a>
+		</div>
+	</div>
+	<img id="bottom" src="bottom.png" alt="">
+	</body>
+</html>
