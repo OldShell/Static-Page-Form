@@ -105,6 +105,9 @@ function getXmlTextNode(xmlDoc,tag){
 	}
 	return "";
 }
+function locationreload(){ 
+	location.reload(); 
+} 
 //Functions for test2. Called by 'onchange' in Pounds and Pence input elements. Values are converted to pence on input
 function totUpMaterials(index,coin,eleValue){
 	if(coin == "pounds"){
