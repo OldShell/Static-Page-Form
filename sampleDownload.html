@@ -64,12 +64,10 @@ function loadDoc(fileName) {
   xhttp.send();
 }
 function dataDownload(xmlString,filename) {
-console.log(filename);
-  filename = filename.replace("", "Example data/");
-console.log(filename);
+  var str = filename.replace("Example data/","");
   var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(xmlString));
-  element.setAttribute('download', filename);
+  element.setAttribute('download', str);
   element.style.display = 'none';
   document.body.appendChild(element);
   element.click();
