@@ -64,7 +64,7 @@ function loadDoc(fileName) {
   xhttp.send();
 }
 function dataDownload(xmlString,filename) {
-  var str = filename.replace("Example data/","");
+  var str = filename.replace(/^.*[\\\/]/, '');
   var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(xmlString));
   element.setAttribute('download', str);
