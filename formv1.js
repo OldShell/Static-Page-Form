@@ -2,7 +2,7 @@ var htmlHeader = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN
 "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"+
 "<head>\n" +
 "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n"+
-"<link rel=\"stylesheet\" type=\"text/css\" href=\"https://oldshell.github.io/Static-Page-Form/view.css\" media=\"all\">\n"+
+"<link rel=\"stylesheet\" type=\"text/css\" href=\"https://oldshell.github.io/Static-Page-Form/reportView.css\" media=\"all\">\n"+
 "<title>Static Report Test Sheet</title>\n"+
 "</head>\n"+
 "<body id=\"main_body\" >\n"+
