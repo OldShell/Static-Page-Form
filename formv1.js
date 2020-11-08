@@ -106,9 +106,11 @@ function formToXml(form){
 	html = html.replace("id=\"saveFile\"","style=\"display:none;\"");
 	html += "</fieldset>\n"+
 	"\n</body>\n"+
+	"<div hidden>"+
 	"<xml>"+
 	strXml +
 	"</xml>\n"+
+	"</div>"+
 	"</html>";
 
 	dataDownload(html);
