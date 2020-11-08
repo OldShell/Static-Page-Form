@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Sheet Editor</title>
+<link rel="stylesheet" type="text/css" href="https://oldshell.github.io/Static-Page-Form/view.css" media="all">
+<script type="text/javascript" src="https://oldshell.github.io/Static-Page-Form/view.js"></script>
+<script type="text/javascript" src="https://oldshell.github.io/Static-Page-Form/calendar.js"></script>
+<script type="text/javascript" src = "https://oldshell.github.io/Static-Page-Form/formv1.js"></script>
+<script type="text/javascript" src = "https://oldshell.github.io/Static-Page-Form/aes.js"></script>
+</head>
+<body id="main_body" >
+	<img id="top" src="https://oldshell.github.io/Static-Page-Form/top.png" alt="">
+	<div id="form_container">
+		<form id="caseForm" class="appnitro"  onSubmit = "return saveData(this);">
+			<div class="form_description">
+				<h2>Testing a Referral Sheet</h2>
+				<p>Test Issue C. Confidential</p>
+			</div>						
+			<ul >
+				<input id="encoded" name= "encoded" value="Unsecure" hidden /><!--Used as an encryption status variable. Set by and recorded in datafile -->
+				<li id = "openFile" ><!--Start of form element-->
+					<label class="description" for="openFile">OPEN File</label>
+					<div>
+						<input id="open_File" name="open_File" class="element file" type="file" onchange="fromLocalFile(&quot;open_File&quot; , &quot;dataIn&quot;,this.form)"/>
+					</div>
+					<p class="guidelines" id="guide_File"><small>Load file from your device. A referrer's template, a completed Referral, or a completed Engineer's case report.</small></p>
+				</li><!--End of form element-->
+<!--<fieldset disabled="disabled">-->
+				<li class="section_break">
+					<h3>Referral Section.</h3>
+					<p></p>
+					<h3 id = "rscn">Case Number:</h3>
+					<p></p>
+				</li>
+				<li id="li_00011" >
+					<label class="description" for="Referral_date">Referral Date </label>
+					<span>
+						<input id="element_95_1" name="Referral_date_dd" class="element text" size="2" maxlength="2" value="" type="text"> /
+						<label for="element_95_1">DD</label>
+					</span>
+					<span>
+						<input id="element_95_2" name="Referral_date_mm" class="element text" size="2" maxlength="2" value="" type="text"> /
+						<label for="element_95_2">MM</label>
+					</span>
+					<span>
+						<input id="element_95_3" name="Referral_date_yyyy" class="element text" size="4" maxlength="4" value="" type="text">
+						<label for="element_95_3">YYYY</label>
+					</span>
+					<span id="calendar_95">
+						<img id="cal_img_95" class="datepicker" src="https://oldshell.github.io/Static-Page-Form/calendar.gif" alt="Pick a date.">	
+					</span>
+					<script type="text/javascript">
+						Calendar.setup({
+						inputField	 : "element_95_3",
+						baseField    : "element_95",
+						displayArea  : "calendar_95",
+						button		 : "cal_img_95",
+						ifFormat	 : "%B %e, %Y",
+						onSelect	 : selectEuropeDate
+						});
+					</script>
+				</li>
+				<li id="li_0001111" >
+					<label class="description" for="referral_organisation">Referrer’s Organisation </label>
+					<div>
+						<input id="referral_organisation" name="referral_organisation" class="element text medium" type="text" maxlength="255" value=""/> 
+					</div> 
+				</li>
+				<li id="li_0002" >
+					<label class="description" for="referral_name">Referrer’s Name </label>
+					<span>
+						<input id="referral_name_first" name= "referral_name_first" class="element text" maxlength="255" size="8" value=""/>
+						<label>First</label>
+					</span>
+					<span>
+						<input id="referral_name_last" name= "referral_name_last" class="element text" maxlength="255" size="14" value=""/>
+						<label>Last</label>
+					</span> 
+				</li>
+				<li id="li_0003" >
+					<label class="description" for="referral_email">Referrer’s Email </label>
+					<div>
+						<input id="referral_email" name="referral_email" class="element text medium" type="text" maxlength="255" value="" onchange = "validateEmail(this)"/> 
+					</div> 
+				</li>
+				<li id="li_0004" >
+					<label class="description" for="referral_phone">Referrer’s Landline </label>
+					<div>
+						<input id="referral_phone" name="referral_phone" class="element text medium" type="text" maxlength="255" value=""/> 
+					</div>
+					<p class="guidelines" id="guide_phone"><small></small></p> 
+				</li>
+				<li id="li_00041" >
+					<label class="description" for="referral_phone_modile">Referrer’s Mobile Phone </label>
+					<div>
+						<input id="referral_phone_modile" name="referral_phone_modile" class="element text medium" type="text" maxlength="255" value=""/> 
+					</div>
+					<p class="guidelines" id="guide_phone"><small></small></p> 
+				</li>
+				<li id="li_0005" >
+					<label class="description" for="referral_role">Referrer's Role </label>
+					<span>
+						<input id="referral_role_1" name="referral_role" class="element radio" type="radio" value="Occupational Therapist" />
+						<label class="choice" for="referral_role_1">Occupational Therapist</label>
+						<input id="referral_role_2" name="referral_role" class="element radio" type="radio" value="Physiotherapist" />
+						<label class="choice" for="referral_role_2">Physiotherapist</label>
+						<input id="referral_role_3" name="referral_role" class="element radio" type="radio" value="Other" />
+						<label class="choice" for="referral_role_3">Other</label>
+					</span> 
+				</li>
+				<li id="li_0006" >
+					<label class="description" for="referral_other_role">If other please specify </label>
+					<div>
+						<input id="referral_other_role" name="referral_other_role" class="element text large" type="text" maxlength="255" value=""/> 
+					</div> 
+				</li>
+				<li id="li_0007" >
+					<label class="description" for="referral_availability">When can we contact you by phone </label>
+					<span>
+						<input id="referral_availability_1" name="referral_availability_1" class="element checkbox" type="checkbox" value="Monday am" />
+						<label class="choice" for="referral_availability_1">Monday am</label>
+						<input id="referral_availability_2" name="referral_availability_2" class="element checkbox" type="checkbox" value="Monday pm" />
+						<label class="choice" for="referral_availability_2">Monday pm</label>
+						<input id="referral_availability_3" name="referral_availability_3" class="element checkbox" type="checkbox" value="Tuesday am" />
+						<label class="choice" for="referral_availability_3">Tuesday am</label>
+						<input id="referral_availability_4" name="referral_availability_4" class="element checkbox" type="checkbox" value="Tuesday pm" />
+						<label class="choice" for="referral_availability_4">Tuesday pm</label>
+						<input id="referral_availability_5" name="referral_availability_5" class="element checkbox" type="checkbox" value="Wednesday am" />
+						<label class="choice" for="referral_availability_5">Wednesday am</label>
+						<input id="referral_availability_6" name="referral_availability_6" class="element checkbox" type="checkbox" value="Wednesday pm" />
+						<label class="choice" for="referral_availability_6">Wednesday pm</label>
+						<input id="referral_availability_7" name="referral_availability_7" class="element checkbox" type="checkbox" value="Thursday am" />
+						<label class="choice" for="referral_availability_7">Thursday am</label>
+						<input id="referral_availability_8" name="referral_availability_8" class="element checkbox" type="checkbox" value="Thursday pm" />
+						<label class="choice" for="referral_availability_8">Thursday pm</label>
+						<input id="referral_availability_9" name="referral_availability_9" class="element checkbox" type="checkbox" value="Friday am" />
+						<label class="choice" for="referral_availability_9">Friday am</label>
+						<input id="referral_availability_10" name="referral_availability_10" class="element checkbox" type="checkbox" value="Friday pm" />
+						<label class="choice" for="referral_availability_10">Friday pm</label>
+					</span><p class="guidelines" id="referral_availability"><small>Please click the tick boxes to change the selection</small></p> 
+				</li>
+				<li id="li_0008" >
+					<label class="description" for="referral_visit">Would you like to be present </label>
+					<span>
+						<input id="referral_visit_1" name="referral_visit" class="element radio" type="radio" value="On our first visit" />
+						<label class="choice" for="referral_visit_1">On our first visit</label>
+						<input id="referral_visit_2" name="referral_visit" class="element radio" type="radio" value="On all our visits" />
+						<label class="choice" for="referral_visit_2">On all our visits</label>
+						<input id="referral_visit_3" name="referral_visit" class="element radio" type="radio" value="The client has agreed to a visited without the referrer being present" />
+						<label class="choice" for="referral_visit_3">The client has agreed to a visited without the referrer being present</label>
+					</span> 
+				</li>
+				<li class="section_break">
+					<h3>Client's Section</h3>
+					<p></p>
+				</li>
+<!--</fieldset>-->
+				<li id="li_decodePassword" >
+					<label class="description" for="element_1">SOME CLIENT'S INFO IS SCRAMBLED - Enter the Password and click the Descramble button if you need to read it.</label>
+					<span>
+						<input id="decodePwd" name= "decodePwd" class="element text" type="password" maxlength="255" size="20" minlength="8" value="" />
+						<label>Password</label>
+					</span>
+					<span>
+						<input id="decode" class="button_text" type="button" name="decode" value="Descramble"  onclick = "decodeBits(this.form)" />
+					</span> 
+				</li>
+<!--<fieldset disabled="disabled">-->
+				<li id="li_0009" >
+					<label class="description" for="client_name_first">Client's Name </label>
+					<span>
+						<input id="client_name_first" name= "client_name_first" class="element text" maxlength="255" size="8" value=""/>
+						<label>First</label>
+					</span>
+					<span>
+						<input id="client_name_last_cipher" name= "client_name_last_cipher" class="element text" maxlength="255" size="14" value=""/>
+						<label>Last</label>
+					</span> 
+				</li>
+				<li id="li_0010" >
+					<label class="description" for="client_name_email">Client's Email </label>
+					<div>
+						<input id="client_name_email_cipher" name="client_name_email_cipher" class="element text medium" type="text" maxlength="255" value=""  onchange = "validateEmail(this)"/> 
+					</div> 
+				</li>
+				<li id="li_0011" >
+					<label class="description" for="client_phone_cipher">Client's Phone </label>
+					<div>
+						<input id="client_phone_cipher" name="client_phone_cipher" class="element text medium" type="text" maxlength="255" value=""/> 
+					</div> 
+					</li>
+				<li id="li_0012" >
+					<label class="description" for="clientAddress">Client Address </label>
+					<div>
+						<input id="client_address_line1_cipher" name="client_address_line1_cipher" class="element text large" value="" type="text">
+						<label for="client_address_line1_cipher">Address Line 1.</label>
+					</div>
+					<div>
+						<input id="client_address_line2_cipher" name="client_address_line2_cipher" class="element text large" value="" type="text">
+						<label for="client_address_line2_cipher">Address Line 2.</label>
+					</div>
+					<div class="left">
+						<input id="client_address_town" name="client_address_town" class="element text medium" value="" type="text">
+						<label for="client_address_town">Town / City</label>
+					</div>
+					<div class="right">
+						<input id="client_address_county" name="client_address_county" class="element text medium" value="" type="text">
+						<label for="client_address_county">County</label>
+					</div>
+					<div class="left">
+						<input id="client_address_postcode_cipher" name="client_address_postcode_cipher" class="element text medium" maxlength="15" value="" type="text">
+						<label for="client_address_postcode_cipher">Postcode.</label>
+					</div>
+				</li>
+<!--</fieldset>-->
+				<li>
+					<input id="saveForm" class="button_text" type="button" name="submit" value="Get Directions" onclick = "getMap(this.form)" />
+				</li>
+<!--<fieldset disabled="disabled">-->
+				<p></p>
+				<li id="li_encodePassword" >
+					<label class="description" for="element_1">PROTECT THE CLIENT'S INFO - Create a Password and click the Scramble button to anonymize this sheet</label>
+					<p></p>
+					<div class="left">
+						<input id="newPwd" name= "newPwd" class="element text" type="password" maxlength="255" size="20" minlength="8" value="" />
+						<label for="newPwd" >New Password</label>
+					</div>
+					<div class="right">
+						<input id="confirmPwd" name= "confirmPwd" class="element text" type="password" maxlength="255" size="20" minlength="8" value="" />
+						<label for="confirmPwd" >Confirm Password</label>
+					</div> 
+					<div class="left">
+						<label id="pwd_input_Status" class="description" >8 Characters or more</label>
+					</div>
+					<div class="right">
+						<input id="encode" class="button_text" type="button" name="encode" value="Scramble"  onclick = "encodeBits(this.form)" />
+					</div> 
+					</li>
+				<li id="li_0013" >
+					<label class="description" for="client_age">Client's Age Range </label>
+					<span>
+						<input id="client_age_1" name="client_age" class="element radio" type="radio" value="Under 18 years of age" />
+						<label class="choice" for="client_age_1">Under 18 years of age</label>
+						<input id="client_age_2" name="client_age" class="element radio" type="radio" value="between 18 and 65 years, inclusive" />
+						<label class="choice" for="client_age_2">between 18 and 65 years, inclusive</label>
+						<input id="client_age_3" name="client_age" class="element radio" type="radio" value="Over 65 years of age" />
+						<label class="choice" for="client_age_3">Over 65 years of age</label>
+					</span> 
+				</li>
+				<li id="li_0015" >
+					<label class="description" for="client_problem">Client's particular problem </label>
+					<div>
+						<textarea id="client_problem" name="client_problem" class="element textarea small"></textarea> 
+					</div> 
+				</li>
+				<li id="li_0016" >
+					<label class="description" for="client_How_can_we_help">How can we help? Please guide us on any medical or safety issues. </label>
+					<div>
+						<textarea id="client_How_can_we_help" name="client_How_can_we_help" class="element textarea small"></textarea> 
+					</div> 
+				</li>		<li id="li_0017" >
+					<label class="description" for="client_other_info">Any other information we may need
+					</label>
+					<div>
+						<textarea id="client_other_info" name="client_other_info" class="element textarea small"></textarea> 
+					</div> 
+				</li>
+				<p></p>
+				<li id = "saveFile" >
+					<div class="left">
+						<input id="saveForm" class="button_text" type="submit" name="submit" value="Save" />
+					</div>
+					<div class="right">
+						<input  class="button_text" type="button" value="Cancel" onClick= "locationReload()" />
+					</div>
+				</li>
+			</ul>
+			</form>	
+		<div id="footer">
+			Generated by <a href="http://www.phpform.org">pForm</a>
+		</div>
+	</div>
+	<img id="bottom" src="https://oldshell.github.io/Static-Page-Form/bottom.png" alt="">
+</body>
+</html>
