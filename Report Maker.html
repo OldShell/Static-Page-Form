@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Report Maker</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src = "https://oldshell.github.io/Static-Page-Form/aes.js"></script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body
+{
+	background:#f1f1f1;
+	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+	font-size: medium;
+	margin:8px 0 16px;
+	text-align:left;
+}
+
+/* Style the header */
+.header {
+  background-color: #888888;
+  padding: 20px;
+  text-align: center;
+}
+
+
+.column {
+	margin:20px 20px 0;
+	padding:0 0 20px;
+}
+ul.a {
+  list-style-position: outside;
+}
+
+</style>
+<script>
+var inReport = ""; // Template with Placeholders.
+var outReport = ""; // Template with placeholders replaced with xml data from the source report
+var xml = ""; //xml data from the source report
+var thisFileName = "newfile";
+var templateName = "";
+var errorMessage = " No Errors"
+
+window.onload = (event) => {
+	document.getElementById("open_File").value = "";//clear
+	document.getElementById('r1').checked = false;
+	document.getElementById('r2').checked = false;
+	document.getElementById('r3').checked = false;
+	document.getElementById('psw').value = "";
+  document.getElementById("open_File").disabled = true;
+	document.getElementById("getpsw").style.display = "none";
+};
+
+function getTemplate(v){
+	document.getElementById("status").innerHTML = "...";
+	templateName = v;
+	  document.getElementById("open_File").disabled = false;
+loadDoc(v);
+}
+function loadDoc(fileName) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      inReport =this.responseText;
+    }
+  };
+  xhttp.open("GET", fileName, true);
+  xhttp.send();
+}
+function saveData(){
+	outReport = inReport;
+	dataDownload();
+	locationReload();
+}
+
+function dataDownload() { //put a string to file
+	var filename = "Child_Report.html";
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(outReport));
+  element.setAttribute('download', filename);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+// This function takes the data from the uploaded XML file and uses it to fill in the template report.
+// It requests the file and uses an event listener to process the file when it arrives.
+function fromLocalFile(buttonId){
+// first check that a template has loaded
+	if(inReport == ""){
+		document.getElementById("status").innerHTML = "Error: Template has not loaded";
+//		return;
+	}
+
+	var str = "input[id=" + buttonId + "]"; // id of input button
+	var file = document.querySelector(str).files[0];
+	thisFileName = file.name;
+	var reader = new FileReader();
+	reader.addEventListener("load", function () {
+		if(extractXml(reader.result)){
+			document.getElementById("status").innerHTML =" OK. Password good, data was unscrambled";
+			document.getElementById("getpsw").style.display = "none";
+		}else{
+			document.getElementById("status").innerHTML =" Failed - Needs a Password";
+			document.getElementById("getpsw").style.display = "block";
+		}
+	}, false);
+	if (file) {
+		reader.readAsText(file);
+	}
+}
+
+function extractXml(xmlString){// File has arrived. parse the file and decrypt it if it needs it
+	//extract the xml data.
+	var xmlStart = xmlString.indexOf("<xml>");
+	var xmlEnd = xmlString.lastIndexOf("</xml>");
+	xmlString = xmlString.slice(xmlStart + 5,xmlEnd);
+	var i, x, tagN = "",nodeV = "";
+	var parser = new DOMParser();
+	var xmlDoc = parser.parseFromString(xmlString,"text/xml"); //important to use "text/xml"
+	var psw = document.getElementById("psw").value;
+	x = xmlDoc.getElementsByTagName('case')[0].childNodes;
+	for (i = 0 ; i <x.length; i++) {
+		tagN = x[i].tagName;
+		nodeV = x[i].childNodes[0].nodeValue;
+		if(tagN.search("_cipher") != -1){
+			var decrypted = CryptoJS.AES.decrypt(nodeV, psw);
+			if(decrypted == ""){return false;} // todo what happens if a node is empty
+			nodeV = decrypted.toString(CryptoJS.enc.Utf8);
+			x[i].childNodes[0].nodeValue = nodeV;
+		}
+	//replace place holders with XML Data
+		if(nodeV == "pLaCeHoLdEr"){ // replacing the placeholder with a placeholder creates an erroneous placeholder.
+			document.getElementById("status").value = "Unexpected text in XML data.";
+			return false;
+		}
+		var ph = "pLaCeHoLdEr" + tagN;
+		inReport = inReport.replace(ph,nodeV);
+	}
+ return true;
+}
+
+function locationReload(){ // reset 
+	location.reload();
+	return false;
+} 
+
+</script>
+</head>
+<body>
+	<div class="header">
+		<h1>Report Maker</h1>
+		<p>Build a new Report using the XML data in a Form/Report.</p>
+	</div>
+  <div class="column">
+	  <p>Please select a Report Template:</p>
+		<input type="radio" id="r1" name="reportFileName" onclick="if(this.checked){getTemplate('templates/templateA.html')}" value="templateA.html">
+		<label for="r1">Good Looker version A</label><br>
+		<input type="radio" id="r2" name="reportFileName" onclick="if(this.checked){getTemplate('templates/templateB.html')}" value="templateB.html">
+		<label for="r2">Good Looker version B</label><br>
+		<input type="radio" id="r3" name="reportFileName" onclick="if(this.checked){getTemplate('templates/templateC.html')}" value="templateC.html">
+		<label for="r3">Good Looker version C</label>
+		<br>
+		<br>
+		<label for="open_File">Open Form/Report:</label>
+		<input id="open_File" name="open_File" type="file"  onchange="fromLocalFile(&quot;open_File&quot;)"/>
+		<br>
+		<br>
+		<div id = "getpsw">
+			<p>Report is password protected, enter the password and try to open the Form/Report again</p>
+			<label for="psw">Password:</label>
+			<input type="password" id="psw" value=""/>
+		</div>
+		<br>
+		<br>
+		<p>Status: <b id = "status" style="color:red;">...</b></p>
+		<br>
+		<br>
+		<label for="buildR">Create Report:</label>
+		<input id = "buildR" type="button" name="save" value="Build report" onclick="saveData()"/>
+  </div>
+</body>
+</html>
+
+<script> // functions used in original version of sampleDownload.html 
+/*function loadDoc(fileName) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      dataDownload(this.responseText,fileName);
+    }
+  };
+  xhttp.open("GET", fileName, true);
+  xhttp.send();
+}
+function dataDownload(xmlString,filename) {
+  var str = filename.replace(/^.*[\\\/]/, '');
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(xmlString));
+  element.setAttribute('download', str);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+*/
+</script>
