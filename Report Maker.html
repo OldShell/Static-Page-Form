@@ -50,7 +50,8 @@ window.onload = (event) => {
 	document.getElementById('r2').checked = false;
 	document.getElementById('r3').checked = false;
 	document.getElementById('psw').value = "";
-  document.getElementById("open_File").disabled = true;
+  	document.getElementById("open_File").disabled = true;
+  	document.getElementById("buildR").disabled = true;
 	document.getElementById("getpsw").style.display = "none";
 };
 
@@ -103,6 +104,7 @@ function fromLocalFile(buttonId){
 		if(extractXml(reader.result)){
 			document.getElementById("status").innerHTML =" OK. Password good, data was unscrambled";
 			document.getElementById("getpsw").style.display = "none";
+  			document.getElementById("buildR").disabled = false;
 		}else{
 			document.getElementById("status").innerHTML =" Failed - Needs a Password";
 			document.getElementById("getpsw").style.display = "block";
