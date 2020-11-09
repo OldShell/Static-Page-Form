@@ -153,7 +153,7 @@ function locationReload(){ // reset
 <body>
 	<div class="header">
 		<h1>Report Maker</h1>
-		<p>Build a new Report using the XML data in a Form/Report.</p>
+		<p>Build a new Report using the XML data from a Form/Report.</p>
 	</div>
   <div class="column">
 	  <p>Please select a Report Template:</p>
@@ -184,27 +184,3 @@ function locationReload(){ // reset
   </div>
 </body>
 </html>
-
-<script> // functions used in original version of sampleDownload.html 
-/*function loadDoc(fileName) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      dataDownload(this.responseText,fileName);
-    }
-  };
-  xhttp.open("GET", fileName, true);
-  xhttp.send();
-}
-function dataDownload(xmlString,filename) {
-  var str = filename.replace(/^.*[\\\/]/, '');
-  var element = document.createElement('a');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(xmlString));
-  element.setAttribute('download', str);
-  element.style.display = 'none';
-  document.body.appendChild(element);
-  element.click();
-  document.body.removeChild(element);
-}
-*/
-</script>
