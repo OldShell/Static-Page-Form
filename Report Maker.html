@@ -139,7 +139,7 @@ function extractXml(xmlString){// File has arrived. parse the file and decrypt i
 			document.getElementById("status").value = "Unexpected text in XML data.";
 			return false;
 		}
-		var ph = "pLaCeHoLdEr" + tagN;
+		var ph = "pLaCeHoLdEr" + tagN + "pLaCeHoLdEr";
 		inReport = inReport.replace(ph,nodeV);
 	}
  return true;
