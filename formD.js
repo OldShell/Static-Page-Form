@@ -4,6 +4,7 @@ var userPassword = "";
 var xmlDoc;
 window.onload = (event) => {
 	document.getElementById("caseForm").reset();//clear the form
+	inFilename = document.getElementById("default_report_name").innerHTML;
 	initForm();
 };
 function initForm(){
