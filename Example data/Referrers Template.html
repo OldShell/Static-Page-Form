@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<title>Test Referral Report D</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src = "https://oldshell.github.io/Static-Page-Form/reportD.js"></script>
+<script type="text/javascript" src = "https://oldshell.github.io/Static-Page-Form/aes.js"></script>
+<style>
+html,body,h1,h2,h3,h4,h5,h6,textarea {font-family: "Roboto", sans-serif}
+textarea {
+  width: 100%;
+  height: 40px;
+  resize: none;
+	border: none;
+	color: gray;
+}
+.big-textarea {
+  width: 100%;
+  height: 70px;
+  resize: none;
+	border: none;
+	color: gray;
+}
+.small-textarea {
+  width: 200px;
+  height: 40px;
+  resize: none;
+	border: solid;
+	border-color: teal;
+	color: gray;
+	padding: 4px;
+}
+.textarea-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+}
+.input-field {
+  width: 100%;
+  outline: none;
+}
+
+</style>
+<script>
+// Most of the function calls in this HTML script are in an external javaScript file,
+// they are generic and serve several HTML files.
+// These JavaScript functions are specific to this HTML file.
+
+function xmlToForm(){// Parse the XML data and put the data into the report
+	var i, t;
+	simpleField("encoded");
+	simpleField("referral_organisation");
+	var testRole = gtn("referral_role");
+	if(testRole = "Other"){
+		document.getElementById("referral_role").value = "Role: " + gtn("referral_other_role");
+	}else{
+		document.getElementById("referral_role").value = "Role: " + gtn("referral_role");
+	}
+	document.getElementById("admin_case_number").value = "Case No. " + gtn("admin_case_number");
+	simpleField("referral_date");
+	simpleField("client_name_first");
+	document.getElementById("client_address_town_county").value = gtn("client_address_town") + ", " + gtn("client_address_county");
+	document.getElementById("referral_name").value = gtn("referral_name_first")+" "+gtn("referral_name_last");
+	simpleField("referral_email");
+	document.getElementById("referral_visit").value = "Be Present: " + gtn("referral_visit");
+	simpleField("client_problem");
+	simpleField("client_how_can_we_help");
+	simpleField("client_other_info");
+// Modal box - Referrers details
+	simpleField("referral_phone");
+	simpleField("referral_phone_modile");
+	for(i=1;i<11;i++){
+		t = "referral_availability_" + i.toString();
+		simpleField(t);
+	}
+	document.getElementById("client_name").value = gtn("client_name_first") + " " + gtn("client_name_last_cipher");
+	document.getElementById("client_age").value = "Age: " + gtn("client_age");
+	document.getElementById("client_address").value = gtn("client_address_line1_cipher")+ ", " +
+  gtn("client_address_line2_cipher")+ ", " +
+	gtn("client_address_town")+ ", " +
+	gtn("client_address_county")+ ", " +
+	gtn("client_address_postcode_cipher");
+	
+	simpleField("client_name_email_cipher");
+	simpleField("client_phone_cipher");
+}
+function simpleField(tag){
+	document.getElementById(tag).value = gtn(tag);
+}
+ 
+</script>
+<body class="w3-light-grey">
+<input id="encoded" name= "encoded" value="Unsecure" hidden /><!--Used as an encryption status variable. Set by and recorded in datafile -->
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+    <div class="w3-third">
+   
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+				<div class="w3-container w3-center">
+          <img src="https://oldshell.github.io/Static-Page-Form/logo.png" style="width:80%" alt="logo">
+					<p><b>Prema Panel: This town and area</b></p>
+					</div>
+          <div class="w3-display-bottomleft w3-container w3-text-black">
+          </div>
+        </div>
+        <div class="w3-container">
+					<hr>
+					<p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Case</b></p>
+					<div class="textarea-container">
+						<i class="fa fa fa-tags fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<input id="admin_case_number" type="text" style="border: none;margin-bottom: 15px;" class="w3-center w3-teal w3-round" readonly value="" />
+					</div>
+					<div class="textarea-container">
+						<i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 13px;"></i>
+						<h6>Referred:</h6>
+						<input id="referral_date" type = "date" style="border: none;" readonly></input>
+					</div>
+					<hr>
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Client</b></p>
+					<div class="textarea-container">
+						<i class="fa fa-user-circle fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="client_name_first" readonly></textarea>
+					</div>
+					
+					<div class="textarea-container">
+						<i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="client_address_town_county" readonly></textarea>
+					</div>
+					<p><i class="fa fa-unlock fa-fw w3-margin-right w3-large w3-text-teal"></i><button class = "w3-button w3-small w3-white w3-border w3-border-teal w3-round-medium" onclick="document.getElementById('id03').style.display='block'"class="btn">Show All Client Details</button></p>
+          <hr>
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Referrer</b></p>
+					<div class="textarea-container">
+						<i class="fa fa-hospital-o fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="referral_organisation" readonly></textarea>
+					</div>
+					<div class="textarea-container">
+						<i class="fa fa-user-secret fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="referral_role" readonly></textarea>
+					</div>
+					<div class="textarea-container">
+						<i class="fa fa-user-circle fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="referral_name" readonly></textarea>
+					</div>
+					<div class="textarea-container">
+						<i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="referral_email" readonly></textarea>
+					</div>
+					<div class="textarea-container">
+						<i class="fa fa-car fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="referral_visit" readonly></textarea>
+					</div>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>Contact Details
+					<button style="border:none;background:none;" onclick="document.getElementById('id01').style.display='block'"class="btn"><i class="fa fa-info-circle w3-large w3-text-teal"></i></button>
+         </p>
+          <br>
+        </div>
+      </div><br>
+
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+    
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-puzzle-piece fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Problem</h2>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Referrer's description</b></h5>
+          <textarea id="client_problem" class = "big-textarea"></textarea>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Referrer's solution</b></h5>
+					<p><textarea id="client_how_can_we_help" class = "big-textarea"></textarea></p>
+				</div>
+				<hr>
+         <div class="w3-container">
+          <h5 class="w3-opacity"><b>Referrer's special instructions</b></h5>
+					<p><textarea id="client_other_info" class = "big-textarea"></textarea></p>
+				</div>
+				
+     </div>
+
+      <div class="w3-container w3-card w3-white">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-cogs fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Solution</h2>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>To be completed by Engineer</b></h5>
+					<hr>
+					<hr>
+					<hr>
+					<hr>
+					<hr>
+					<hr>
+					<hr>
+        </div>
+      </div>
+
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>
+
+  <!-- Modal box, Referrer's contact details -->
+<div id="id01" class="w3-modal" >
+	<div class="w3-modal-content" style="max-width: 500px">
+		<div class="w3-container">
+			<h5 class="w3-opacity"><b>Referrer's contact details</b></h5>
+			<div class="textarea-container">
+				<i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+				<textarea id="referral_phone" readonly></textarea>
+			</div>
+			<div class="textarea-container">
+				<i class="fa fa-mobile fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+				<textarea id="referral_phone_modile" readonly></textarea>
+			</div>
+			<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+			<div class="w3-panel">
+				<h5 class="w3-opacity"><b>Contactable</b></h5>
+				<div class="textarea-container">
+					<textarea id="referral_availability_1" class="small-textarea" readonly></textarea>
+					<textarea id="referral_availability_2" class="small-textarea" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<textarea id="referral_availability_3" class="small-textarea" readonly></textarea>
+					<textarea id="referral_availability_4" class="small-textarea" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<textarea id="referral_availability_5" class="small-textarea" readonly></textarea>
+					<textarea id="referral_availability_6" class="small-textarea" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<textarea id="referral_availability_7" class="small-textarea" readonly></textarea>
+					<textarea id="referral_availability_8" class="small-textarea" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<textarea id="referral_availability_9" class="small-textarea" readonly></textarea>
+					<textarea id="referral_availability_10" class="small-textarea" readonly></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+  <!-- Modal box, client details -->
+<div id="id03" class="w3-modal">
+	<div class="w3-modal-content">
+			<span onclick="document.getElementById('id03').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+			<form id = "client" class="w3-container w3-card-4" >
+				<div id = "decode">
+					<h4>Some client details may be encoded. </h4>
+					<div class="w3-row-padding w3-section w3-stretch">
+						<div class="w3-third">
+							<label for="cpw">Password</label>
+							<input id="cpw" class="w3-input w3-border" type="password" >
+						</div>
+						<div class="w3-third">
+							<label for="cvd">View details</label>
+							<button id ="cvd" type = "button" class="w3-btn w3-teal w3-block" onclick ="decodeForm(this.form)">Apply</button>
+						</div>
+						<div class="w3-third">
+							<label for="cvm">Status message:</label>
+							<input style = "background-color: #ffffff;" id="cvm" class="w3-input w3-border" type="text" readonly >
+						</div>
+					</div>
+				</div>
+				<hr>
+				<p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Client details</b></p>
+				<div class="textarea-container">
+					<i class="fa fa-user-circle fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+					<textarea id="client_name" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<i class="fa fa-user-o fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+					<textarea id="client_age" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+					<textarea id="client_address" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+					<textarea id="client_name_email_cipher" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+					<textarea id="client_phone_cipher" readonly></textarea>
+				</div>
+				<hr>
+				<p>
+				<button type="button" class="w3-btn w3-teal w3-block"  onclick = "getMap()" />Send address to Google Maps and get directions</button>
+				</p>
+			</form>
+	</div>
+</div>
+
+<footer class="w3-container w3-teal w3-center w3-margin-top">
+  <p>This version 2 example report contain JavaScript and will not work in Dropbox's Web Preview but will work if you access it via Dropbox's System Folder in Windows File Explorer.</p>
+	<p>Based on an example at <a href="https://www.w3schools.com/w3css/w3css_templates.asp" target="_blank">w3school.com</a></p>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+<div hidden>
+	<p id="xmlData"><case><encoded>Unsecure</encoded><referral_organisation>Year One</referral_organisation><referral_name_first>Peppa</referral_name_first><referral_name_last>Pig</referral_name_last><referral_email>peppa@tv.co.uk</referral_email><referral_phone>123456789</referral_phone><referral_phone_modile>0987654321</referral_phone_modile><referral_role>Other</referral_role><referral_other_role>Nurse</referral_other_role><referral_availability_1>Monday am</referral_availability_1><referral_availability_4>Tuesday pm</referral_availability_4><referral_availability_5>Wednesday am</referral_availability_5><referral_availability_8>Thursday pm</referral_availability_8><referral_availability_9>Friday am</referral_availability_9><referral_visit>On our first visit</referral_visit></case></p>
+</div>
+</body>
+</html>
