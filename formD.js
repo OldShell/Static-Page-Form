@@ -13,7 +13,9 @@ function initForm(){
 function fromLocalFile(buttonId,form){
 	var str = "input[id=" + buttonId + "]"; // id of input button
 	var file = document.querySelector(str).files[0];
-	//inFilename = file.name;
+	if(inFilename = "no_change"){
+		inFilename = file.name;
+	}
 	inFilename = inFilename.replace(/\.[^/.]+$/, "");
 	var reader = new FileReader();
 	reader.addEventListener("load", function () {
