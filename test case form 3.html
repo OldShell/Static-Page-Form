@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html>
+<title>Test Case Form v3</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<script type="text/javascript" src = "https://oldshell.github.io/Static-Page-Form/formD.js"></script>
+<script type="text/javascript" src = "https://oldshell.github.io/Static-Page-Form/aes.js"></script>
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+.checkbox-grid li {
+  display: block;
+  float: left;
+  width: 33%;
+	padding: 5px;
+}
+form label {
+	font-weight:bold;
+	padding: 5px;
+}
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+input {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+button {
+  border-radius: 4px;
+}
+
+</style>
+<body class="w3-content w3-light-grey">
+
+<div class="w3-margin-top" style="max-width:1400px;">
+	<div class="w3-white w3-text-grey w3-card-4">
+		<div class="w3-container w3-teal">
+			<h2>Case Form</h2>
+			<h5>Issue D. Confidential</h5>
+			<p>Please fill in this form and press the 'Generate Report' button at the bottom of the form. A report will then be generated and downloaded to your computer for you to keep or distribute. Optionally you can start by part filling the form with data from an existing report.</p>
+		</div>
+		<form id = "caseForm" class="w3-container" onSubmit = "return saveData(this);">
+			<input id="encoded" name= "encoded" value="Unsecure" hidden /><!--Used as an encryption status variable. Set by and recorded in datafile -->
+			<p id = "default_report_name" hidden>Case_Report</p>
+			<h4>Part fill in the form with data from a file (Optional)</h4>
+			<p>
+			<label for="openFile">Open a template or a report</label>
+			<input accept=".html" id="open_File" name="open_File" type="file" onchange="fromLocalFile('open_File',this.form)"/></p>
+			<hr>
+			
+			
+<fieldset disabled >
+  <legend>Read Only section:</legend>
+
+			
+			
+			
+			<h2>Referral Section</h2>
+			<p>
+			<label for="rd">Referal date </label>
+			<input class="w3-input w3-border"type="date" id="rd" name="referral_date"></p>
+			<p>
+			<label for="ro">Referrer's organisation</label>
+			<input id = "ro" class="w3-input w3-border" name="referral_organisation" type="text"></p>
+			<div class="w3-row-padding w3-section w3-stretch">
+				<div class="w3-half">
+					<label for="fn">Referrer's first name</label>
+					<input id="fn" class="w3-input w3-border" name="referral_name_first" type="text" >
+				</div>
+				<div class="w3-half">
+					<label for="ln">Referrer's last name</label>
+					<input id="ln" class="w3-input w3-border" name="referral_name_last" type="text" >
+				</div>
+			</div>
+			<p>
+			<label for="re">Referrer's email</label>
+			<input id = "re" class="w3-input w3-border" name="referral_email" type="email"></p>
+			<div class="w3-row-padding w3-section w3-stretch">
+				<div class="w3-half">
+					<label for="ll">Referrer's landline</label>
+					<input id="ll" class="w3-input w3-border" name="referral_phone" type="text" >
+				</div>
+				<div class="w3-half">
+					<label for="mo">Referrer's mobile</label>
+					<input id="mo" class="w3-input w3-border" name="referral_phone_modile" type="text">
+				</div>
+			</div>
+			<h4>Referrer's role</h4>
+			<p>
+			<input class="w3-radio" type="radio" name="referral_role" value="Occupational Therapist">
+			<label>Occupational therapist</label></p>
+			<p>
+			<input class="w3-radio" type="radio" name="referral_role" value="Physiotherapist">
+			<label>Physiotherapist</label></p>
+			<p>
+			<input class="w3-radio" type="radio" name="referral_role" value="Other">
+			<label>Other</label></p>
+			<label for="io">If other, please specify</label>
+			<input id = "io" class="w3-input w3-border" name="referral_other_role" type="text"></p>
+			<div class="w3-row-padding w3-section w3-stretch">
+				<div class="w3-half">
+					<h4>When can we contact you by phone</h4>
+					<ul class="checkbox-grid ">
+						<li><label>Day</label></li>
+						<li><label>am</label></li>
+						<li><label>pm</label></li>
+						<li><label for="ra1">Monday</label></li>
+						<li><input id="ra1" type="checkbox" name="referral_availability_1" value="Monday am" /></li>
+						<li><input type="checkbox" name="referral_availability_2" value="Monday pm" /></li>
+						<li><label for="ra3">Tuesday</label></li>
+						<li><input id="ra3" type="checkbox" name="referral_availability_3" value="Tuesday am" /></li>
+						<li><input type="checkbox" name="referral_availability_4" value="Tuesday pm" /></li>
+						<li><label for="ra5">Wednesday</label></li>
+						<li><input id="ra5" type="checkbox" name="referral_availability_5" value="Wednesday am" /></li>
+						<li><input type="checkbox" name="referral_availability_6" value="Wednesday pm" /></li>
+						<li><label for="ra7">Thursday</label></li>
+						<li><input id="ra7" type="checkbox" name="referral_availability_7" value="Thursday am" /></li>
+						<li><input type="checkbox" name="referral_availability_8" value="Thursday pm" /></li>
+						<li><label for="ra9">Friday</label></li>
+						<li><input id="ra9" type="checkbox" name="referral_availability_9" value="Friday am" /></li>
+						<li><input type="checkbox" name="referral_availability_10" value="Friday pm" /></li>
+					</ul>
+				</div>
+			</div>
+			<h4>Would you like to be present</h4>
+			<p>
+			<input class="w3-radio" type="radio" name="referral_visit" value="On our first visit">
+			<label>On our first visit</label></p>
+			<p>
+			<input class="w3-radio" type="radio" name="referral_visit" value="On all our visits">
+			<label>On all our visits</label></p>
+			<p>
+			<input class="w3-radio" type="radio" name="referral_visit" value="The client has agreed to a visited without the referrer being present">
+			<label>The client has agreed to be visited without the referrer being present</label></p>
+			<hr>
+			<h2>Client's Section</h2>
+			<div class="w3-row-padding w3-section w3-stretch">
+				<div class="w3-half">
+					<label for="cfn">Client's first name</label>
+					<input id="cfn" class="w3-input w3-border" name="client_name_first" type="text" >
+				</div>
+				<div class="w3-half">
+					<label for="cln">Client's last name</label>
+					<input id="cln" class="w3-input w3-border" name="client_name_last_cipher" type="text" >
+				</div>
+			</div>
+			<p>
+			<label for="ce">Client's email</label>
+			<input id = "ce" class="w3-input w3-border" name="client_name_email_cipher" type="email"></p>
+			<p>
+			<label for="cp">Client's phone</label>
+			<input id = "cp" class="w3-input w3-border" name="client_phone_cipher" type="text"></p>
+			<p>
+			<label for="ca1">Client's address line 1</label>
+			<input id = "ca1" class="w3-input w3-border" name="client_address_line1_cipher" type="text"></p>
+			<p>
+			<label for="ca2">Address line 2</label>
+			<p>
+			<input id = "ca2" class="w3-input w3-border" name="client_address_line2_cipher" type="text"></p>
+			<div class="w3-row-padding w3-section w3-stretch">
+				<div class="w3-third">
+					<label for="tc">Town/City</label>
+					<input id="tc" class="w3-input w3-border" name="client_address_town" type="text" >
+				</div>
+				<div class="w3-third">
+					<label for="cc">County</label>
+					<input id="cc" class="w3-input w3-border" name="client_address_county" type="text" >
+				</div>
+				<div class="w3-third">
+					<label for="pc">Postcode</label>
+					<input id="pc" class="w3-input w3-border" name="client_address_postcode_cipher" type="text" >
+				</div>
+			</div>
+			<div id = "encode">
+			<h4>Password protect the client's details. 8 characters or more.</h4>
+				<div class="w3-row-padding w3-section w3-stretch">
+					<div class="w3-quarter">
+						<label for="npw">New password</label>
+						<input id="npw" class="w3-input w3-border" type="password" >
+					</div>
+					<div class="w3-quarter">
+						<label for="ccpw">Confirmation</label>
+						<input id="ccpw" class="w3-input w3-border" type="password" >
+					</div>
+					<div class="w3-quarter">
+						<label for="cpb">Anonymize the dataset</label>
+						<button id ="cpb" type = "button" class="w3-btn w3-teal w3-block" onclick = "encodeForm(this.form)">Apply</button>
+					</div>
+					<div class="w3-quarter">
+						<label for="csm">Status message:</label>
+						<input style = "background-color: #ffffff;" id="csm" class="w3-input w3-border" type="text" readonly >
+					</div>
+				</div>
+			</div>
+</fieldset>
+			<div id="decode">
+				<h4>Some client details are encoded. </h4>
+				<div class="w3-row-padding w3-section w3-stretch">
+					<div class="w3-third">
+						<label for="cpw">Password</label>
+						<input id="cpw" class="w3-input w3-border" type="password" >
+					</div>
+					<div class="w3-third">
+						<label for="cvd">View details</label>
+						<button id ="cvd" type = "button" class="w3-btn w3-teal w3-block" onclick ="decodeForm(this.form)">Apply</button>
+					</div>
+					<div class="w3-third">
+						<label for="cvm">Status message:</label>
+						<input style = "background-color: #ffffff;" id="cvm" class="w3-input w3-border" type="text" readonly >
+					</div>
+				</div>
+			</div>
+<fieldset disabled >
+  <legend>Read Only section:</legend>
+
+			<h4>Client's age range</h4>
+			<p>
+			<input class="w3-radio" type="radio" name="client_age" value="Under 18 years of age">
+			<label>Under 18</label></p>
+			<p>
+			<input class="w3-radio" type="radio" name="client_age" value="between 18 and 65 years, inclusive">
+			<label>18 to 65</label></p>
+			<p>
+			<input class="w3-radio" type="radio" name="client_age" value="Over 65 years of age">
+			<label>over 65</label></p>
+			
+			<h4>Client's particular problem</h4>
+			<textarea name="client_problem" ></textarea>
+			<h4>How can we help? Please guide us on any medical or safety issues</h4>
+			<textarea name="client_how_can_we_help" ></textarea>
+			<h4>Any other information we may need</h4>
+			<textarea name="client_other_info" ></textarea>
+			<hr>
+			<h2>Administrator's Section</h2>
+			<p>
+			<label for="cn">Case number</label>
+			<input id = "cn" class="w3-input w3-border" name="admin_case_number" type="text"></p>
+			<h4>Nominated engineer</h4>
+			<div class="w3-row-padding w3-section w3-stretch">
+				<div class="w3-half">
+					<label for="efn">First name</label>
+					<input id="efn" class="w3-input w3-border" name="admin_eng_name_first" type="text" >
+				</div>
+				<div class="w3-half">
+					<label for="eln">Last name</label>
+					<input id="eln" class="w3-input w3-border" name="admin_eng_name_last" type="text" >
+				</div>
+			</div>
+			
+			<h4>Special instructions from the administrator</h4>
+
+			<textarea name="admin_instructions" ></textarea>
+			<p>
+			<label for="ar">Risks for this case are assessed as:</label>
+			<input id = "ar" class="w3-input w3-border" name="admin_risk" type="text"></p>
+			<p>
+			<input id="arc" type="checkbox" name="admin_risk_attached" value="Risk Assessment form is attached" />
+			<label for="arc">A risk assessment has been made for this case. Do we make it part of this dataset? does it have to be a word doc? must it be signed?</label></p>
+			<div id = "removePwd">
+				<h4>Remove password protection</h4>
+				<div class="w3-row-padding w3-section w3-stretch">
+					<div class="w3-third">
+						<label for="pw">Password</label>
+						<input id="pw" class="w3-input w3-border" type="password" >
+					</div>
+					<div class="w3-third">
+						<label for="dds">Remove password</label>
+						<button id ="dds" type = "button" class="w3-btn w3-teal w3-block" onclick ="removePwd(this.form)">Apply</button>
+					</div>
+					<div class="w3-third">
+						<label for="sm">Status message:</label>
+						<input style = "background-color: #ffffff;" id="sm" class="w3-input w3-border" type="text" readonly >
+					</div>
+				</div>
+			</div>
+</fieldset>
+		<hr>
+			<h2>Engineer's Section</h2>
+			<h4>Link to the engineer's Case document or folder</h4>
+			<p>
+			<label for="project_url">Insert link here</label>
+			<input id = "project_url" class="w3-input w3-border" name="eng_project_url" type="url" pattern="https://.*"></p>
+			<p><button type = "button" class="w3-btn w3-teal w3-block" onclick = "testUrl()">Click here to test the link</button></p>
+			<h4>Brief description of the solution</h4>
+			<textarea name="eng_description" ></textarea>
+			<h4>Expenses - Materials</h4>
+		<div class="w3-container">
+			<table id = "tableM" class="w3-table ">
+				<tr>
+					<th>Item</th>
+					<th style="width:100px;" class="w3-right-align">Pounds</th>
+					<th style="width:100px;">Pence</th>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_1" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_1_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_1_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_2" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_2_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_2_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_3" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_3_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_3_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_4" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_4_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_4_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_5" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_5_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_5_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_6" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_6_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_6_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_7" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_7_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_7_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_8" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_8_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_8_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_9" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_9_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_9_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_10" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_10_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_10_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_11" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_11_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_11_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_12" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_12_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_12_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_13" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_13_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_13_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_14" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_14_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_14_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_15" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_15_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_15_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_16" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_16_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_16_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_17" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_17_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_17_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_18" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_18_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_18_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_19" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_19_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_19_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<td><input class="w3-input w3-border" name="eng_materials_20" type="text"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_20_pounds" oninput="totUp()"type="number" min="0"></td>
+					<td><input class="w3-input w3-border" name="eng_materials_20_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+				</tr>
+				<tr>
+					<th>Total cost</th>
+					<th style="width:100px;" class="w3-right-align">Pounds</th>
+					<th style="width:100px;">Pence</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input style = "background-color: #ffffff;" class="w3-input w3-border" name="engineer_materials_total_pounds" type="text" readonly></td>
+					<td><input style = "background-color: #ffffff;" class="w3-input w3-border" name="engineer_materials_total_pence" type="text" readonly></td>
+				</tr>
+			</table>
+		</div>
+			
+			<h4>Expenses - Man hours</h4>
+			<p>
+			<label for="ee">Hours spent on the case by an engineer</label>
+			<input id = "ee" class="w3-input w3-border" name="eng_hours_eng" type="number" min="0"></p>
+			<label for="ea">Hours spent on the case by an administrator</label>
+			<input id = "ea" class="w3-input w3-border" name="eng_hours_admin" type="number" min="0"></p>
+			<label for="em">Hours spent on the case by a medical professional</label>
+			<input id = "em" class="w3-input w3-border" name="eng_hours_medical" type="number" min="0"></p>
+			<p>
+			<label for="ccd">Case completion date</label>
+			<input class="w3-input w3-border"type="date" id="ccd" name="eng_done_date"></p>
+			<hr>
+			<p><button class="w3-btn w3-teal w3-block" type="submit">Create Report</button></p>
+		</form>
+	</div>
+</div>
+<footer class="w3-container w3-teal w3-center w3-margin-top">
+  <p>This example Form, replaces the earlier Editors and issue C sample reports, It used the same software framework as the 'Good Looker' reports. Hopefully these issue D Forms and Reports with have the same look and feel but be distinct so that a report will not be confused with a form.</p>
+	<p>Based on an example at <a href="https://www.w3schools.com/w3css/w3css_templates.asp" target="_blank">w3school.com</a></p>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+</body>
+<script>
+"use strict";
+function genReport(xmlData){
+// All of this JavaScript is basically one Template literal. It is the template for the HTML report this form generates.
+// The xmlData is passed to this function and inserted into the literal string a few lines from the end.
+// The text in the template literal is taken from a working HTML report.
+// That report is developed and tested before being inserted into the template literal string.
+// Note: As of Nov 2020, there is a problem with Template literals, the sequence,< / s c r i p t >, is interpreted as the
+// end of the script. To prevent that the literal is slit at those points to break the sequence. 
+	var outReport = `<!DOCTYPE html>
+<html>
+<title>Main Report D</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src = "https://oldshell.github.io/Static-Page-Form/reportD.js"></`+
+`script>
+<script type="text/javascript" src = "https://oldshell.github.io/Static-Page-Form/aes.js"></`+
+`script>
+<style>
+html,body,h1,h2,h3,h4,h5,h6,textarea {font-family: "Roboto", sans-serif}
+textarea {
+  width: 100%;
+  height: 40px;
+  resize: none;
+	border: none;
+	color: gray;
+}
+.big-textarea {
+  width: 100%;
+  height: 70px;
+  resize: none;
+	border: none;
+	color: gray;
+}
+.small-textarea {
+  width: 200px;
+  height: 40px;
+  resize: none;
+	border: solid;
+	border-color: teal;
+	color: gray;
+	padding: 4px;
+}
+.textarea-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+}
+.input-field {
+  width: 100%;
+  outline: none;
+}
+
+</style>
+<script>
+// Most of the function calls in this HTML script are in an external javaScript file,
+// they are generic and serve several HTML files.
+// These JavaScript functions are specific to this HTML file.
+
+function xmlToForm(){// Parse the XML data and put the data into the report
+	var i, t;
+	simpleField("encoded");
+	document.getElementById("admin_case_number").value = "Case No. " + gtn("admin_case_number");
+	simpleField("referral_date");
+	simpleField("eng_done_date");
+	simpleField("client_name_first");
+	document.getElementById("client_address_town_county").value = gtn("client_address_town") + ", " + gtn("client_address_county");
+	document.getElementById("referral_name").value = gtn("referral_name_first")+" "+gtn("referral_name_last");
+	simpleField("referral_email");
+	document.getElementById("referral_visit").value = "Be Present: " + gtn("referral_visit");
+	document.getElementById("admin_eng_name").value = gtn("admin_eng_name_first") + " " + gtn("admin_eng_name_last");
+	simpleField("client_problem");
+	simpleField("client_how_can_we_help");
+	simpleField("client_other_info");
+	simpleField("eng_description");
+	document.getElementById("eng_project_url").href = gtn("eng_project_url");
+	document.getElementById("engineerMaterialsTotal").value = "Total cost:  £" + gtn("engineer_materials_total_pounds")+"."+gtn("engineer_materials_total_pence");
+	document.getElementById("eng_hours_eng").value = "Engineer:  " + gtn("eng_hours_eng") + " hours";
+	document.getElementById("eng_hours_admin").value = "Administration:  " + gtn("eng_hours_admin") + " hours";
+	document.getElementById("eng_hours_medical").value = "Medical:  " + gtn("eng_hours_medical") + " hours";
+// Modal box - Referrers details
+	simpleField("referral_phone");
+	simpleField("referral_phone_modile");
+	for(i=1;i<11;i++){
+		t = "referral_availability_" + i.toString();
+		simpleField(t);
+	}
+	for(i=1;i<21;i++){
+		t = "eng_materials_" + i.toString();
+		simpleField(t);
+		t = "eng_materials_" + i.toString() + "_pounds";
+		simpleField(t);
+		t = "eng_materials_" + i.toString() + "_pence";
+		simpleField(t);
+	}
+	document.getElementById("client_name").value = gtn("client_name_first") + " " + gtn("client_name_last_cipher");
+	document.getElementById("client_age").value = "Age: " + gtn("client_age");
+	document.getElementById("client_address").value = gtn("client_address_line1_cipher")+ ", " +
+  gtn("client_address_line2_cipher")+ ", " +
+	gtn("client_address_town")+ ", " +
+	gtn("client_address_county")+ ", " +
+	gtn("client_address_postcode_cipher");
+	
+	simpleField("client_name_email_cipher");
+	simpleField("client_phone_cipher");
+	document.getElementById("risk").value = "Risk: " + gtn("admin_risk") +" - "+ gtn("admin_risk_attached") +" - "+ gtn("admin_instructions");
+}
+function simpleField(tag){
+	document.getElementById(tag).value = gtn(tag);
+}
+ 
+</`+
+`script>
+<body class="w3-light-grey">
+<input id="encoded" name= "encoded" value="Unsecure" hidden /><!--Used as an encryption status variable. Set by and recorded in datafile -->
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+    <div class="w3-third">
+   
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+				<div class="w3-container w3-center">
+          <img src="https://oldshell.github.io/Static-Page-Form/logo.png" style="width:80%" alt="logo">
+					<p><b>Prema Panel: This town and area</b></p>
+					</div>
+          <div class="w3-display-bottomleft w3-container w3-text-black">
+          </div>
+        </div>
+        <div class="w3-container">
+					<hr>
+					<p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Case</b></p>
+					<div class="textarea-container">
+						<i class="fa fa fa-tags fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<input id="admin_case_number" type="text" style="border: none;margin-bottom: 15px;" class="w3-center w3-teal w3-round" readonly value="" />
+					</div>
+					<div class="textarea-container">
+						<i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 13px;"></i>
+						<h6>Referred:</h6>
+						<input id="referral_date" type = "date" style="border: none;" readonly></input>
+					</div>
+					<div class="textarea-container">
+						<i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 13px;"></i>
+						<h6>Completed:</h6>
+						<input id="eng_done_date" type = "date" style="border: none;" readonly></input>
+					</div>
+					<hr>
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Client</b></p>
+					<div class="textarea-container">
+						<i class="fa fa-user-circle fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="client_name_first" readonly></textarea>
+					</div>
+					
+					<div class="textarea-container">
+						<i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="client_address_town_county" readonly></textarea>
+					</div>
+					<p><i class="fa fa-unlock fa-fw w3-margin-right w3-large w3-text-teal"></i><button class = "w3-button w3-small w3-white w3-border w3-border-teal w3-round-medium" onclick="document.getElementById('id03').style.display='block'"class="btn">Show All Client Details</button></p>
+          <hr>
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Referrer</b></p>
+					<div class="textarea-container">
+						<i class="fa fa-user-circle fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="referral_name" readonly></textarea>
+					</div>
+					<div class="textarea-container">
+						<i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="referral_email" readonly></textarea>
+					</div>
+					<div class="textarea-container">
+						<i class="fa fa-car fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="referral_visit" readonly></textarea>
+					</div>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>Contact Details
+					<button style="border:none;background:none;" onclick="document.getElementById('id01').style.display='block'"class="btn"><i class="fa fa-info-circle w3-large w3-text-teal"></i></button>
+         </p>
+					<hr>
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Engineer</b></p>
+					<div class="textarea-container">
+						<i class="fa fa-user-circle fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="admin_eng_name" readonly></textarea>
+					</div>
+          <br>
+        </div>
+      </div><br>
+
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+    
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-puzzle-piece fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Problem</h2>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Referrer's description</b></h5>
+          <textarea id="client_problem" class = "big-textarea"></textarea>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Referrer's solution</b></h5>
+					<p><textarea id="client_how_can_we_help" class = "big-textarea"></textarea></p>
+				</div>
+				<hr>
+         <div class="w3-container">
+          <h5 class="w3-opacity"><b>Referrer's special instructions</b></h5>
+					<p><textarea id="client_other_info" class = "big-textarea"></textarea></p>
+				</div>
+				<hr>
+         <div class="w3-container">
+          <h5 class="w3-opacity"><b>Risk Assessment and administrator's instructions</b></h5>
+					<p><textarea id="risk" class = "big-textarea"></textarea></p>
+				</div>
+				
+     </div>
+
+      <div class="w3-container w3-card w3-white">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-cogs fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Solution</h2>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>brief description</b></h5>
+          <textarea id="eng_description" class = "big-textarea"></textarea>
+					<p><i class="fa fa-link fa-fw w3-margin-right w3-large w3-text-teal"></i><a id="eng_project_url" class="w3-text-gray" href="" target="_blank">Engineer's case folder</a></p>
+          <hr>
+         <h5 class="w3-opacity"><b>Costs</b></h5>
+					<div class="textarea-container">
+						<i class="fa fa-credit-card fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="engineerMaterialsTotal" style="width: 150px;" readonly></textarea>
+						<button style="border:none;border:none;background:none;height:20px" onclick="document.getElementById('id02').style.display='block'"class="btn"><i class="fa fa-info-circle w3-large w3-text-teal"></i></button>
+					</div>
+					<div class="textarea-container">
+						<i class="fa fa-hourglass-end fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="eng_hours_eng" readonly></textarea>
+					</div>
+					<div class="textarea-container">
+						<i class="fa fa-hourglass-end fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="eng_hours_admin" readonly></textarea>
+					</div>
+					<div class="textarea-container">
+						<i class="fa fa-hourglass-end fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+						<textarea id="eng_hours_medical" readonly></textarea>
+					</div>
+        </div>
+      </div>
+
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>
+
+  <!-- Modal box, Referrer's contact details -->
+<div id="id01" class="w3-modal" >
+	<div class="w3-modal-content" style="max-width: 500px">
+		<div class="w3-container">
+			<h5 class="w3-opacity"><b>Referrer's contact details</b></h5>
+			<div class="textarea-container">
+				<i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+				<textarea id="referral_phone" readonly></textarea>
+			</div>
+			<div class="textarea-container">
+				<i class="fa fa-mobile fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+				<textarea id="referral_phone_modile" readonly></textarea>
+			</div>
+			<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+			<div class="w3-panel">
+				<h5 class="w3-opacity"><b>Contactable</b></h5>
+				<div class="textarea-container">
+					<textarea id="referral_availability_1" class="small-textarea" readonly></textarea>
+					<textarea id="referral_availability_2" class="small-textarea" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<textarea id="referral_availability_3" class="small-textarea" readonly></textarea>
+					<textarea id="referral_availability_4" class="small-textarea" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<textarea id="referral_availability_5" class="small-textarea" readonly></textarea>
+					<textarea id="referral_availability_6" class="small-textarea" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<textarea id="referral_availability_7" class="small-textarea" readonly></textarea>
+					<textarea id="referral_availability_8" class="small-textarea" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<textarea id="referral_availability_9" class="small-textarea" readonly></textarea>
+					<textarea id="referral_availability_10" class="small-textarea" readonly></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+  <!-- Modal box, Material Costs -->
+<div id="id02" class="w3-modal">
+	<div class="w3-modal-content">
+		<div class="w3-container">
+			<h5 class="w3-opacity"><b>Material Costs</b></h5>
+			<span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+			<table class="w3-table">
+				<tr>
+					<th>Item</th>
+					<th style="width:100px;text-align: right;">Pounds</th>
+					<th style="width:100px;">Pence</th>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_1" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_1_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_1_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_2" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_2_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_2_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_3" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_3_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_3_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_4" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_4_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_4_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_5" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_5_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_5_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_6" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_6_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_6_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_7" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_7_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_7_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_8" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_8_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_8_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_9" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_9_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_9_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_10" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_10_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_10_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_11" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_11_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_11_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_12" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_12_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_12_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_13" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_13_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_13_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_14" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_14_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_14_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_15" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_15_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_15_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_16" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_16_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_16_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_17" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_17_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_17_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_18" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_18_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_18_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_19" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_19_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_19_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				<tr>
+					<td ><input id="eng_materials_20" type="text" style="width: 100%;" value="" readonly /></td>
+					<td ><input id="eng_materials_20_pounds" type="text" style="width:100px;text-align: right;" value="" readonly /></td>
+					<td ><input id="eng_materials_20_pence" type="text" style="width:100px;" value="" readonly /></td>
+				</tr>
+				</table>
+          <p><i class="fa fa-credit-card fa-fw w3-margin-right w3-large w3-text-teal"></i>Expenses claim
+					<button style="border:none;background:none;" onclick="document.getElementById('id04').style.display='block'"class="btn"><i class="fa fa-info-circle w3-large w3-text-teal"></i></button>
+         </p>
+		</div>
+	</div>
+</div>
+  <!-- Modal box, client details -->
+<div id="id03" class="w3-modal">
+	<div class="w3-modal-content">
+			<span onclick="document.getElementById('id03').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+			<form id = "client" class="w3-container w3-card-4" >
+				<div id = "decode">
+					<h4>Some client details may be encoded. </h4>
+					<div class="w3-row-padding w3-section w3-stretch">
+						<div class="w3-third">
+							<label for="cpw">Password</label>
+							<input id="cpw" class="w3-input w3-border" type="password" >
+						</div>
+						<div class="w3-third">
+							<label for="cvd">View details</label>
+							<button id ="cvd" type = "button" class="w3-btn w3-teal w3-block" onclick ="decodeForm(this.form)">Apply</button>
+						</div>
+						<div class="w3-third">
+							<label for="cvm">Status message:</label>
+							<input style = "background-color: #ffffff;" id="cvm" class="w3-input w3-border" type="text" readonly >
+						</div>
+					</div>
+				</div>
+				<hr>
+				<p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Client details</b></p>
+				<div class="textarea-container">
+					<i class="fa fa-user-circle fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+					<textarea id="client_name" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<i class="fa fa-user-o fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+					<textarea id="client_age" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+					<textarea id="client_address" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+					<textarea id="client_name_email_cipher" readonly></textarea>
+				</div>
+				<div class="textarea-container">
+					<i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"style="margin-top: 2px;"></i>
+					<textarea id="client_phone_cipher" readonly></textarea>
+				</div>
+				<hr>
+				<p>
+				<button type="button" class="w3-btn w3-teal w3-block"  onclick = "getMap()" />Send address to Google Maps and get directions</button>
+				</p>
+			</form>
+	</div>
+</div>
+<div id="id04" class="w3-modal">
+	<div class="w3-modal-content">
+		<div class="w3-container">
+			<h5 class="w3-opacity"><b>Sorry, under development. Got to see a man about a spreadsheet.</b></h5>
+			<span onclick="document.getElementById('id04').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+		</div>
+	</div>
+</div>
+
+<footer class="w3-container w3-teal w3-center w3-margin-top">
+  <p>This version 2 example report contain JavaScript and will not work in Dropbox's Web Preview but will work if you access it via Dropbox's System Folder in Windows File Explorer.</p>
+	<p>Based on an example at <a href="https://www.w3schools.com/w3css/w3css_templates.asp" target="_blank">w3school.com</a></p>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+<div hidden>
+	<p id="xmlData">`+
+xmlData	+
+`</p>
+</div>
+</body>
+</html>`;
+	return outReport;
+}
+</script>
+</html> 
