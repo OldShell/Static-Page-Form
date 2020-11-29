@@ -253,11 +253,11 @@ button {
 			<p>
 			<input id="arc" type="checkbox" name="admin_risk_attached" value="Risk Assessment form is attached" />
 			<label for="arc">A risk assessment has been made for this case. Do we make it part of this dataset? does it have to be a word doc? must it be signed?</label></p>
-			<div id = "removePwd">
+			<div id = "removePwd" hidden>
 				<h4>Remove password protection</h4>
 				<div class="w3-row-padding w3-section w3-stretch">
 					<div class="w3-third">
-						<label for="pw">Password</label>
+						<label for="pw">Existing Password</label>
 						<input id="pw" class="w3-input w3-border" type="password" >
 					</div>
 					<div class="w3-third">
@@ -270,6 +270,7 @@ button {
 					</div>
 				</div>
 			</div>
+<div hidden>
 			<hr>
 			<h2>Engineer's Section</h2>
 			<h4>Link to the engineer's Case document or folder</h4>
@@ -280,125 +281,125 @@ button {
 			<h4>Brief description of the solution</h4>
 			<textarea name="eng_description" ></textarea>
 			<h4>Expenses - Materials</h4>
-		<div class="w3-container">
-			<table id = "tableM" class="w3-table ">
-				<tr>
-					<th>Item</th>
-					<th style="width:100px;" class="w3-right-align">Pounds</th>
-					<th style="width:100px;">Pence</th>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_1" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_1_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_1_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_2" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_2_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_2_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_3" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_3_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_3_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_4" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_4_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_4_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_5" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_5_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_5_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_6" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_6_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_6_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_7" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_7_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_7_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_8" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_8_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_8_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_9" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_9_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_9_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_10" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_10_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_10_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_11" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_11_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_11_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_12" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_12_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_12_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_13" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_13_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_13_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_14" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_14_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_14_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_15" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_15_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_15_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_16" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_16_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_16_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_17" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_17_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_17_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_18" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_18_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_18_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_19" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_19_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_19_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<td><input class="w3-input w3-border" name="eng_materials_20" type="text"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_20_pounds" oninput="totUp()"type="number" min="0"></td>
-					<td><input class="w3-input w3-border" name="eng_materials_20_pence" oninput="totUp()"type="number" min="0" max="99"></td>
-				</tr>
-				<tr>
-					<th>Total cost</th>
-					<th style="width:100px;" class="w3-right-align">Pounds</th>
-					<th style="width:100px;">Pence</th>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input style = "background-color: #ffffff;" class="w3-input w3-border" name="engineer_materials_total_pounds" type="text" readonly></td>
-					<td><input style = "background-color: #ffffff;" class="w3-input w3-border" name="engineer_materials_total_pence" type="text" readonly></td>
-				</tr>
-			</table>
-		</div>
+			<div class="w3-container">
+				<table id = "tableM" class="w3-table ">
+					<tr>
+						<th>Item</th>
+						<th style="width:100px;" class="w3-right-align">Pounds</th>
+						<th style="width:100px;">Pence</th>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_1" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_1_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_1_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_2" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_2_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_2_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_3" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_3_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_3_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_4" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_4_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_4_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_5" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_5_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_5_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_6" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_6_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_6_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_7" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_7_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_7_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_8" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_8_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_8_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_9" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_9_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_9_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_10" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_10_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_10_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_11" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_11_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_11_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_12" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_12_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_12_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_13" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_13_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_13_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_14" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_14_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_14_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_15" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_15_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_15_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_16" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_16_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_16_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_17" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_17_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_17_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_18" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_18_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_18_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_19" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_19_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_19_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-border" name="eng_materials_20" type="text"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_20_pounds" oninput="totUp()"type="number" min="0"></td>
+						<td><input class="w3-input w3-border" name="eng_materials_20_pence" oninput="totUp()"type="number" min="0" max="99"></td>
+					</tr>
+					<tr>
+						<th>Total cost</th>
+						<th style="width:100px;" class="w3-right-align">Pounds</th>
+						<th style="width:100px;">Pence</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input style = "background-color: #ffffff;" class="w3-input w3-border" name="engineer_materials_total_pounds" type="text" readonly></td>
+						<td><input style = "background-color: #ffffff;" class="w3-input w3-border" name="engineer_materials_total_pence" type="text" readonly></td>
+					</tr>
+				</table>
+			</div>
 			
 			<h4>Expenses - Man hours</h4>
 			<p>
@@ -411,8 +412,9 @@ button {
 			<p>
 			<label for="ccd">Case completion date</label>
 			<input class="w3-input w3-border"type="date" id="ccd" name="eng_done_date"></p>
+	</div>
 			<hr>
-			<p><button class="w3-btn w3-teal w3-block" type="submit">Create Report</button></p>
+			<p><button class="w3-btn w3-teal w3-block" type="submit">Allocate</button></p>
 		</form>
 	</div>
 </div>
