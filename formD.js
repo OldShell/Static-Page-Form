@@ -7,6 +7,9 @@ window.onload = (event) => {
 	inFilename = document.getElementById("default_report_name").innerHTML;
 	initForm();
 };
+window.onbeforeunload = function(){
+  return 'Are you sure you want to leave?';
+};
 function initForm(){
 	updateDisplay();
 }
