@@ -250,7 +250,7 @@ const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric
 }
 
 function dataDownload(xmlString) { //put a string to file
-  inFilename = document.getElementById("admin_case_number").value + " " + inFilename;
+console.log(inFilename,document.getElementById("admin_case_number").value);
   inFilename = inFilename.trim();
   var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(xmlString));
