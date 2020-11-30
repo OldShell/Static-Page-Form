@@ -16,10 +16,10 @@ function initForm(){
 function fromLocalFile(buttonId,form){
 	var str = "input[id=" + buttonId + "]"; // id of input button
 	var file = document.querySelector(str).files[0];
-	if(inFilename == "Eng_only_Report"){
-		inFilename = file.name;
-	}
-	inFilename = inFilename.replace(/\.[^/.]+$/, "");
+//	if(inFilename == "Eng_only_Report"){
+//		inFilename = file.name;
+//	}
+//	inFilename = inFilename.replace(/\.[^/.]+$/, "");
 	var reader = new FileReader();
 	reader.addEventListener("load", function () {
 		xmlToForm(form,reader.result);
@@ -250,6 +250,8 @@ const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric
 }
 
 function dataDownload(xmlString) { //put a string to file
+  inFilename = document.getElementById("admin_case_number").value + " " + inFilename;
+  inFilename = inFilename.trim();
   var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(xmlString));
   element.setAttribute('download', inFilename + ".html");
