@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Help info</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body
+{
+	background:#f1f1f1;
+	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+	font-size:large;
+	margin:8px 0 16px;
+	text-align:left;
+}
+
+/* Style the header */
+.header {
+  background-color: #888888;
+  padding: 20px;
+  text-align: center;
+}
+
+
+.column {
+	margin:20px 20px 0;
+	padding:0 0 20px;
+}
+
+</style>
+</head>
+<body>
+
+	<div class="header">
+		<h1>Static Forms for small organisation</h1>
+		<p></p>
+	</div>
+	<div class="column">
+	<H3>Overview</H3>
+		<p>The Sheet is in four parts; Referral, Client Info, Admin, Engineers report. Below is a selection of full and part completed sheets, as they would be part completed by each person involved, from referral, through assignment to completion by the engineer. Some are password protected and its the usual password. The password scrambles just a small part of the sheet, enough to anonymize the sheet but leaving the rest of the sheet to be read and edited.</p>
+		<h3>Click the button to download a completed case, all 4 sections completed</h3>
+		<p><button type="button" onclick="loadDoc('Example data/Referrers Template.html')">Referrers Template</button></p>
+		<h3>Click the button to download a completed Referral with no password</h3>
+		<p><button type="button" onclick="loadDoc('Completed Referral Report.html')">Completed Referral report</button></p>
+		<h3>Click the button to download a completed case with the password set</h3>
+		<p><button type="button" onclick="loadDoc('Example data/Completed Case Report.html')">Completed Case Report</button></p>
+	</div>
+<script>
+function loadDoc(fileName) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      dataDownload(this.responseText,fileName);
+    }
+  };
+  xhttp.open("GET", fileName, true);
+  xhttp.send();
+}
+function dataDownload(xmlString,filename) {
+  var str = filename.replace(/^.*[\\\/]/, '');
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(xmlString));
+  element.setAttribute('download', str);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+
+</script>
+</body>
+</html>
