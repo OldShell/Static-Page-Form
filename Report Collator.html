@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Report Collator</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src = "https://oldshell.github.io/Static-Page-Form/aes.js"></script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body
+{
+	background:#f1f1f1;
+	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+	font-size: medium;
+	margin:8px 0 16px;
+	text-align:left;
+}
+
+/* Style the header */
+.header {
+  background-color: #888888;
+  padding: 20px;
+  text-align: center;
+}
+
+
+.column {
+	margin:20px 20px 0;
+	padding:0 0 20px;
+}
+ul.a {
+  list-style-position: outside;
+}
+
+</style>
+<script>
+var xml = "<portsmouth_chichester>";
+var thisFileName = "referral";
+
+window.onload = (event) => {
+	document.getElementById("open_File").value = "";//clear
+};
+function saveData(){
+	dataDownload();
+	locationReload();
+}
+
+function dataDownload() { //put a string to file
+	xml +="</portsmouth_chichester>";
+	var filename = "collated.xml";
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(xml));
+  element.setAttribute('download', filename);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+// This function takes the data from the uploaded XML file and uses it to fill in the form.
+// It requests the file and uses an event listener to process the file when it arrives.
+function fromLocalFile(buttonId,textId){
+	var list = document.getElementById('fileList');
+	var str = "input[id=" + buttonId + "]"; // id of input button
+	var file = document.querySelector(str).files[0];
+	thisFileName = file.name;
+	var reader = new FileReader();
+	reader.addEventListener("load", function () {
+		if(extractXml(reader.result)){
+			if(document.getElementById("dotDotDot").innerHTML == "......"){
+				document.getElementById("dotDotDot").innerHTML = thisFileName;
+			}else{
+				var entry = document.createElement('li');
+				entry.appendChild(document.createTextNode(thisFileName));
+				list.appendChild(entry);
+			}
+			document.getElementById("status").innerHTML =" OK. Password good, data was unscrambled";
+		}else{
+			document.getElementById("status").innerHTML =" Failed - Try another Password";
+		}
+	}, false);
+	if (file) {
+		reader.readAsText(file);
+	}
+}
+
+function extractXml(xmlString){// File has arrived. parse the file and decrypt it if it needs it
+	//extract the xml data.
+	//extract the xml data.
+	var xmlStart = xmlString.indexOf("<case>");
+	var xmlEnd = xmlString.lastIndexOf("</case>");
+	xmlString = xmlString.slice(xmlStart,xmlEnd + 7);
+	var i, x, tagN = "",nodeV = "";
+	var parser = new DOMParser();
+	var xmlDoc = parser.parseFromString(xmlString,"text/xml"); //important to use "text/xml"
+	if(xmlDoc.getElementsByTagName("encoded")[0].childNodes[0].nodeValue == "Secure"){ // need to decode content
+		xmlDoc.getElementsByTagName("encoded")[0].childNodes[0].nodeValue = "Unsecure";
+		var psw = document.getElementById("psw").value;
+		x = xmlDoc.getElementsByTagName('case')[0].childNodes;
+		for (i = 0 ; i <x.length; i++) {
+			tagN = x[i].tagName;
+			if(tagN.search("_cipher") != -1){
+				nodeV = x[i].childNodes[0].nodeValue;
+				var decrypted = CryptoJS.AES.decrypt(nodeV, psw);
+				if(decrypted == ""){return false;} // todo what happens if a node is empty
+				nodeV = decrypted.toString(CryptoJS.enc.Utf8);
+				x[i].childNodes[0].nodeValue = nodeV;
+			}
+    }
+	var serialXml = new XMLSerializer();
+	xml += serialXml.serializeToString(xmlDoc);
+ }else{
+	 	xml += xmlString; // no need to decode, case is concatenated
+ }
+ return true;
+}
+
+function locationReload(){ // reset 
+	location.reload();
+	return false;
+} 
+
+</script>
+</head>
+<body>
+	<div class="header">
+		<h1>Collate XML Data</h1>
+		<p> Utility to create an XML data file that can be Imported into a Spreadsheet. This utility extract data from one or more Reports and collates the data into a single XML File. This utility uses JavaScript and, like the Editors, will not work in Dropbox Web Preview. </p>
+	</div>
+  <div class="column">
+		<h3>First enter a password</h3>
+		<p>If the report is password protected, then the password is used to unscramble the client's details. The password is remembered for subsequent files</p>
+		<label for="psw">Password:</label>
+		<input type="password" id="psw" value=""/>
+		<br><br>
+		<label for="open_File">Open next Report:</label>
+		<input id="open_File" name="open_File" type="file" onchange="fromLocalFile(&quot;open_File&quot; , &quot;dataIn&quot;,this)"/>
+		<br>
+		<p>Open File Status:<b id = "status" >None</b></p>
+		<h3>List of report files to be collated</h3>
+		<ul id = "fileList" class = "a">
+			<li id = "dotDotDot">......</li>
+		</ul>
+		<br>
+		<br>
+		<label for="collate">Create XML Data file:</label>
+		<input id = "collate" type="button" name="save" value="Collate" onclick="saveData()"/>
+  </div>
+</body>
+</html>
