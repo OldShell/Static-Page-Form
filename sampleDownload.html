@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Downloads</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body
+{
+	background:#f1f1f1;
+	font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+	font-size:large;
+	margin:8px 0 16px;
+	text-align:left;
+}
+
+/* Style the header */
+.header {
+  background-color: #888888;
+  padding: 20px;
+  text-align: center;
+}
+
+
+.column {
+	margin:20px 20px 0;
+	padding:0 0 20px;
+}
+
+</style>
+</head>
+<body>
+
+	<div class="header">
+		<h1>Static Forms and Reports for small organisation</h1>
+		<p></p>
+	</div>
+	<div class="column">
+	<H3>Overview</H3>
+		<p>Below is a selection of full and part completed Reports, as they would be part completed by each person involved.</p>
+		<p>Referrers Template. Click button to download it:<p>
+		<p><button type="button" onclick="loadDoc('Example data/Referrers Template.html')">Download</button></p>
+		<p>Completed Referral report. Click button to download it:<p>
+		<p><button type="button" onclick="loadDoc('Example data/Completed Referral Report.html')">Download</button></p>
+		<p>Completed Case report. Click button to download it:<p>
+		<p><button type="button" onclick="loadDoc('Example data/Completed Case Report.html')">Completed Case Report</button></p>
+
+	</div>
+<script>
+function loadDoc(fileName) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      dataDownload(this.responseText,fileName);
+    }
+  };
+  xhttp.open("GET", fileName, true);
+  xhttp.send();
+}
+function dataDownload(xmlString,filename) {
+  var str = filename.replace(/^.*[\\\/]/, '');
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(xmlString));
+  element.setAttribute('download', str);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+
+</script>
+</body>
+</html>
