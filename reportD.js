@@ -7,7 +7,7 @@ window.onload = (event) => {
 	var xmlString = document.getElementById("xmlData").innerHTML;
 	var parser = new DOMParser();
 	xmlDoc = parser.parseFromString(xmlString,"text/xml"); //important to use "text/xml"
-	if(document.getElementById("noJavaScriptBanner")){
+	if(document.getElementById("noJavaScriptBanner").innerHTML){
 		document.getElementById("noJavaScriptBanner").innerHTML = "";
 	{
 	xmlToForm();
