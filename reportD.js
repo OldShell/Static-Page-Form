@@ -7,6 +7,7 @@ window.onload = (event) => {
 	var xmlString = document.getElementById("xmlData").innerHTML;
 	var parser = new DOMParser();
 	xmlDoc = parser.parseFromString(xmlString,"text/xml"); //important to use "text/xml"
+	document.getElementById("noJavaScriptBanner").innerHTML = "";
 	xmlToForm();
 	updateDisplay();
 };
