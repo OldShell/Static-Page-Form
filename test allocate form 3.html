@@ -535,7 +535,8 @@ function xmlToForm(){// Parse the XML data and put the data into the report
 	gtn("client_address_postcode_cipher");
 	
 	simpleField("client_name_email_cipher");
-	simpleField("client_phone_cipher");
+	simpleField("client_phone_landline_cipher");
+	simpleField("client_phone_mobile_cipher");
 	document.getElementById("risk").value = "Risk: " + gtn("admin_risk") +" - "+ gtn("admin_risk_attached") +" - "+ gtn("admin_instructions");
 }
 function simpleField(tag){
