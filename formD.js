@@ -285,6 +285,10 @@ function saveData(form){
 		dataDownload(genReport(strXml));
 	  alert("A file has been created in your Downloads folder, attached it to an email and send it to us.");
 	}
+	if(exitFlag == "downloadDB"){
+		dataDownload(genReport(strXml));
+	  alert("A file has been created in your Downloads folder, Move it to a Dropbox folder.");
+	}
 	if(exitFlag == "clipboard"){
 		copyToClipboard(strXml);
 	  alert("Raw Data has been copied to the clipboard. Paste the data into an email and send it to us.");
