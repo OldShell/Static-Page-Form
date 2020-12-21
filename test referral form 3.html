@@ -496,7 +496,7 @@ function xmlToForm(){// Parse the XML data and put the data into the report
 	simpleField("encoded");
 	simpleField("referral_organisation");
 	var testRole = gtn("referral_role");
-	if(testRole = "Other"){
+	if(testRole == "Other"){
 		document.getElementById("referral_role").value = "Role: " + gtn("referral_other_role");
 	}else{
 		document.getElementById("referral_role").value = "Role: " + gtn("referral_role");
