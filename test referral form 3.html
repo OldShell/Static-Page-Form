@@ -416,8 +416,11 @@ button {
 				<label for="ccd">Case completion date</label>
 				<input class="w3-input w3-border"type="date" id="ccd" name="eng_done_date"></p>
 				<hr>
-			</dir>
-			<p><button class="w3-btn w3-teal w3-block" type="submit">Create Report</button></p>
+				<label >Use One or both methods to Create the Report</label>
+				<p><button onclick="saveMode('download')" class="w3-btn w3-teal w3-block" type="submit">Create Report and Download it to your computer</button></p>
+				<p><button onclick="saveMode('clipboard')" class="w3-btn w3-teal w3-block" type="submit">Create Report and copy it to the Clipboard</button></p>
+				<hr>
+				<p><button onclick="saveMode('reset')" class="w3-btn w3-teal w3-block" type="submit">Clear the form</button></p>
 			</div>
 		</form>
 	</div>
