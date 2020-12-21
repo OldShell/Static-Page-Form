@@ -2,6 +2,7 @@
 var inFilename = "Default Report Name";
 var userPassword = "";
 var xmlDoc;
+var exitFlag = "none";
 window.onload = (event) => {
 	document.getElementById("caseForm").reset();//clear the form
 	inFilename = document.getElementById("default_report_name").innerHTML;
@@ -280,8 +281,27 @@ function saveData(form){
 	formToXml(form); // load global variable xmlDoc with data from the form.
 	var serialXml = new XMLSerializer();
 	var strXml = serialXml.serializeToString(xmlDoc);
-	dataDownload(genReport(strXml));
-	form.reset();
+	if(exitFlag == "download"){
+		dataDownload(genReport(strXml));
+	  alert("A file has been created in your Downloads folder, attached it to an email and send it to us.");
+	}
+	if(exitFlag == "clipboard"){
+		copyToClipboard(strXml);
+	  alert("Raw Data has been copied to the clipboard. Paste the data into an email and send it to us.");
+	}
+	if(exitFlag == "reset"){form.reset();}
 	return false; //return false to the HTML from element. Important for the form, as it is working in the normal way.
 }
+function copyToClipboard(xmlStr){
+  var el = document.createElement('textarea');
+  el.value = xmlStr;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+}
+function saveMode(str){
+	exitFlag = str;
+}
+
 
