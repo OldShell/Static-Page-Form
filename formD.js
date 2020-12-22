@@ -283,7 +283,7 @@ function saveData(form){
 	var strXml = serialXml.serializeToString(xmlDoc);
 	if(exitFlag == "download"){
 		dataDownload(genReport(strXml));
-	  alert("A file has been created in your Downloads folder, attached it to an email and send it to us.");
+	  alert("A file has been created in your Downloads folder, attached it to an email and send it to us.\n If you are not sure where it went, press Ctrl+J on your keyboard, the file is named Referral Report.html.");
 	}
 	if(exitFlag == "downloadDB"){
 		dataDownload(genReport(strXml));
