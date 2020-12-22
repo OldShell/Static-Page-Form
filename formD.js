@@ -298,7 +298,7 @@ function saveData(form){
 }
 function copyToClipboard(xmlStr){
   var el = document.createElement('textarea');
-  el.value = xmlStr;
+  el.value = "WELL DONE! You have copied the report. The gobbledegook that follows is the raw data. You can now send the email.\n " + xmlStr + "\n WELL DONE! You have copied the report. The gobbledegook above is the raw data. You can now send the email";
   document.body.appendChild(el);
   el.select();
   document.execCommand('copy');
